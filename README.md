@@ -1,6 +1,7 @@
 # SignBridge
 
 Mechanistic interpretability exploration probing whether LLaVA-1.5-7B encodes ASL hand-shape structure in its language decoder layers and where that signal peaks in the network. Try it here [Demo](https://56a8bcbb412e06f1bd.gradio.live/)
+![alt text](demo.png)
 
 ## Exploration Project
 
