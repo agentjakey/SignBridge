@@ -1,7 +1,6 @@
 # SignBridge
 
 Mechanistic interpretability exploration probing whether LLaVA-1.5-7B encodes ASL hand-shape structure in its language decoder layers and where that signal peaks in the network. Try it here [Demo](https://56a8bcbb412e06f1bd.gradio.live/)
-![alt text](demo.png)
 
 ## Exploration Project
 
@@ -29,6 +28,7 @@ Peak at layer 16 is consistent with probing literature (e.g. Alain & Bengio, 201
 ## Important Caveats
 
 - **Dataset limitations**: Sign Language MNIST uses 28×28 grayscale stylized images, not natural photos. LLaVA was trained on natural images. The probe signal likely reflects the model encoding low-level visual features (hand shape, finger configuration) that correlate with ASL letters, rather than linguistic ASL understanding per se. Results with natural-photo datasets (WLASL, ASL Citizen) could differ substantially.
+> ![alt text](class_grid.png)
 - **Scale**: 300 images, 20 classes, 15 samples per class. Results are directionally strong but a larger-scale replication is warranted.
 - **Probe layers**: Only 4 layers sampled (8, 16, 24, 31). A dense sweep across all 32 layers would give a more complete picture of where information peaks and decays.
 - **Causality**: Linear probing establishes correlation, not causation. Activation patching would be needed to confirm that layer 16 representations causally mediate sign classification.
@@ -45,8 +45,11 @@ Peak at layer 16 is consistent with probing literature (e.g. Alain & Bengio, 201
 ## Results
 
 - **Probe accuracy at layer 16: 81.7%** (+76.7 pp above chance)
+> ![alt text](probe_accuracy_curve.png)
 - UMAP shows partially separated class structure at layer 16, suggestive but not definitive given small sample size
+> ![alt text](umap_projection.png)
 - VLM text responses ("Peace", "Finger", "Fist") are consistently non-ASL, the hand-shape signal is latent only
+> ![alt text](demo.png)
 
 ## Motivation
 
